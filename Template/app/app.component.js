@@ -10,16 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var saurabh_component_1 = require('./component/saurabh.component');
+var router_1 = require("@angular/router");
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(_router) {
+        this._router = _router;
+        //If you want to use Router in your component (for navigation etc), you can inject it like this
     }
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            templateUrl: 'views/app.html',
-            directives: [saurabh_component_1.SaurabhComponent]
-        }), 
-        __metadata('design:paramtypes', [])
+            template: "<a [routerLink]=\"['/SaurabhComponent']\">Click to go to component 1</a><router-outlet></router-outlet> ",
+            directives: [router_1.ROUTER_DIRECTIVES]
+        }),
+        router_1.Routes([
+            { path: "/SaurabhComponent", component: saurabh_component_1.SaurabhComponent },
+        ]), 
+        __metadata('design:paramtypes', [router_1.Router])
     ], AppComponent);
     return AppComponent;
 }());
